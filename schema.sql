@@ -78,3 +78,23 @@ CREATE TABLE PoolMemberSkill (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+/* PROJECTSKILL SCHEMA */
+CREATE TABLE ProjectSkill (
+    project_id INT NOT NULL,
+    skill_id INT NOT NULL,
+
+    PRIMARY KEY (project_id, skill_id),
+
+    CONSTRAINT fk_ps_project
+        FOREIGN KEY (project_id)
+        REFERENCES Project(project_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    CONSTRAINT fk_ps_skill
+        FOREIGN KEY (skill_id)
+        REFERENCES Skill(skill_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+)
