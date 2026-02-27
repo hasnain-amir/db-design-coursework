@@ -39,3 +39,21 @@ CREATE TABLE Project (
     CONSTRAINT chk_project_budget
         check (budget IS NULL OR budget >= 0)
 );
+
+/* POOLMEMBER SCHEMA */
+CREATE TABLE PoolMember (
+    member_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    phone VARCHAR(30),
+    work_address VARCHAR(255),
+    home_address VARCHAR(255),
+    project_id INT NULL,
+
+    CONSTRAINT fk_poolmember_project
+        FOREIGN KEY (project_id)
+        REFERENCES Project(project_id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
