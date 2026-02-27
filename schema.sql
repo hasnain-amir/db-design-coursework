@@ -16,3 +16,26 @@ CREATE TABLE Client (
     address VARCHAR(255),
     contact_preference ENUM('post', 'email') NOT NULL
 );
+
+/* PROJECT SCHEMA */
+CREATE TABLE Project (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    client_id INT NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NULL,
+    budget DECIMAL(10,2) NULL,
+    description TEXT NULL,
+    phase ENUM('design', 'development', 'testing', 'deployment', 'complete') NOT NULL DEFAULT 'design',
+
+    CONSTRAINT fk_project_client
+        FOREIGN KEY (client_id) REFERENCES Client(client_id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+
+    CONSTRAINT chk_project_dates
+        CHECK (end_date IS NULL OR end_date >= start_date),
+
+    CONSTRAINT chk_project_budget
+        check (budget IS NULL OR budget >= 0)
+);
