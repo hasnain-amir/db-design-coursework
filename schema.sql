@@ -10,7 +10,7 @@ CREATE TABLE Skill (
 CREATE TABLE Client (
     client_id INT AUTO_INCREMENT PRIMARY KEY,
     org_name VARCHAR(150),
-    first_name varchar(100) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     address VARCHAR(255),
@@ -37,7 +37,7 @@ CREATE TABLE Project (
         CHECK (end_date IS NULL OR end_date >= start_date),
 
     CONSTRAINT chk_project_budget
-        check (budget IS NULL OR budget >= 0)
+        CHECK (budget IS NULL OR budget >= 0)
 );
 
 /* POOLMEMBER SCHEMA */
