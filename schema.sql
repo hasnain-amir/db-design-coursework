@@ -1,5 +1,5 @@
-/* SKILLS SCHEMA */
-CREATE TABLE Skills (
+/* SKILL SCHEMA */
+CREATE TABLE Skill (
     skill_id INT AUTO_INCREMENT PRIMARY KEY,
     skill_name VARCHAR(100) NOT NULL,
     skill_type VARCHAR(100) NOT NULL,
@@ -55,5 +55,26 @@ CREATE TABLE PoolMember (
         FOREIGN KEY (project_id)
         REFERENCES Project(project_id)
         ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+
+/* POOLMEMBER_SKILL SCHEMA */
+CREATE TABLE PoolMemberSkill (
+    member_id INT NOT NULL,
+    skill_id INT NOT NULL,
+    experience_level ENUM('junior', 'mid', 'expert') NOT NULL,
+
+    PRIMARY KEY (member_id, skill_id),
+
+    CONSTRAINT fk_pms_member
+        FOREIGN KEY (member_id)
+        REFERENCES PoolMember(member_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    CONSTRAINT fk_pms_skill
+        FOREIGN KEY (skill_id)
+        REFERENCES Skill(skill_id)
+        ON DELETE CASCADE
         ON UPDATE CASCADE
 );
