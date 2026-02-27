@@ -96,5 +96,5 @@ CREATE TABLE ProjectSkill (
         FOREIGN KEY (skill_id)
         REFERENCES Skill(skill_id)
         ON DELETE CASCADE
-        ON UPDATE CASCADE
-)
+        ON UPDATE CASCADE 
+);
