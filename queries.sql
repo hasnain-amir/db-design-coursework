@@ -1,3 +1,5 @@
+-- SUN: 240161226
+
 /* INSERT SKILLS */
 INSERT INTO Skill (skill_name, skill_type) VALUES
 ('PHP', 'Backend'),
