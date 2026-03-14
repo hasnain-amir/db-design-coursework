@@ -7,6 +7,8 @@
 
 A normalised (3NF) relational MySQL database for a software company's project management system, designed for the DG1IAD module at Aston University.
 
+![Preview](./preview.png)
+
 ---
 
 ## Files
